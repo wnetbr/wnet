@@ -334,7 +334,7 @@
         </div>
 
         <div class="footer">
-               2026 wnet  |  direitos reservado.
+            &copy; 2024 wnet. Engineered for privacy.
         </div>
     </div>
 
@@ -361,35 +361,30 @@
             overlay.style.display = 'flex';
             setTimeout(() => overlay.classList.add('active'), 10);
 
-            // 2. Sequência de Status para Experiência do Usuário (Animações antes do download)
-            setTimeout(() => {
-                statusTitle.textContent = "Verificando Integridade";
-                statusDesc.textContent = "Garantindo que o arquivo seja 100% seguro.";
-            }, 1200);
-
-            setTimeout(() => {
-                statusTitle.textContent = "Preparando Conexão";
-                statusDesc.textContent = "Estabelecendo túnel de download seguro.";
-            }, 2400);
-
-            setTimeout(() => {
-                statusTitle.textContent = "Download Iniciado";
-                statusDesc.textContent = "O wnet está sendo transferido.";
-                loader.style.borderColor = "transparent";
-                loader.style.borderTopColor = "#34c759";
-                loader.innerHTML = '<i class="fa-solid fa-check" style="color: #34c759; font-size: 20px; margin-top: 10px;"></i>';
-                loader.style.animation = "none";
-                
-                // DISPARA O DOWNLOAD AUTOMÁTICO SOMENTE APÓS AS ANIMAÇÕES
+            // 2. Lógica de Download Automático Infalível
+            const triggerDownload = () => {
                 const link = document.createElement('a');
                 link.href = APK_URL;
                 link.download = "wnet_pro.apk";
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            }, 3600);
+            };
 
-            // Fecha o overlay automaticamente após o download iniciar
+            // Executa o download imediatamente
+            triggerDownload();
+
+            // 3. Sequência de Status para Experiência do Usuário
+            setTimeout(() => {
+                statusTitle.textContent = "Download Iniciado";
+                statusDesc.textContent = "O arquivo está sendo transferido.";
+                loader.style.borderColor = "transparent";
+                loader.style.borderTopColor = "#34c759";
+                loader.innerHTML = '<i class="fa-solid fa-check" style="color: #34c759; font-size: 20px; margin-top: 10px;"></i>';
+                loader.style.animation = "none";
+            }, 1500);
+
+            // Fecha o overlay automaticamente
             setTimeout(() => {
                 overlay.classList.remove('active');
                 setTimeout(() => {
@@ -401,8 +396,8 @@
                     loader.style.animation = "spin 0.8s linear infinite";
                     loader.style.borderColor = "var(--glass)";
                     loader.style.borderTopColor = "var(--accent)";
-                }, 500);
-            }, 5500);
+                }, 4000);
+            }, 4000);
         });
     </script>
 </body>
