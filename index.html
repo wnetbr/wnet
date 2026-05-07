@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wnet | Official Download</title>
+    <!-- Importando fontes premium -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #000000;
+            --card-bg: rgba(28, 28, 30, 0.7);
+            --accent: #0071e3;
+            --text: #f5f5f7;
+            --text-dim: #86868b;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1c1c1e 0%, #000000 100%);
+        }
+
+        /* Fundo animado sutil */
+        .bg-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(0, 113, 227, 0.15), transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            background: var(--card-bg);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: containerAppear 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes containerAppear {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            background: #fff;
+            padding: 2px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 26px;
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.3), transparent 70%);
+            z-index: 1;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 17px;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .download-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 30px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 113, 227, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 113, 227, 0.4);
+            background: #0077ed;
+        }
+
+        .download-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s;
+        }
+
+        .download-btn:hover .btn-shine {
+            left: 100%;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .info-item {
+            background: var(--glass);
+            padding: 15px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .info-item i {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+            animation: iconBounce 2s infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .info-label {
+            display: block;
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .status-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .status-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .status-overlay.active .status-card {
+            transform: scale(1);
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--glass);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 30px;
+            }
+            h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo-glow"></div>
+            <div class="logo-container">
+                <img src="https://ok-moccasin-fxxuilq23t.edgeone.app/bbc30160-49ba-11f1-9adb-11432caa6012.png" alt="wnet Logo">
+            </div>
+        </div>
+        
+        <h1>wnet</h1>
+        <p>A próxima geração de conectividade segura. Simples, rápido e privado.</p>
+
+        <a href="https://apk.dtunnel.com.br/build/6de24fd96f/4.6.2_base_pro.apk" id="downloadLink" class="download-btn">
+            <span class="btn-shine"></span>
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+            Baixar Agora
+        </a>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fa-solid fa-code-branch"></i>
+                <span class="info-label">Versão</span>
+                <span class="info-value">2.0 Pro</span>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-weight-hanging"></i>
+                <span class="info-label">Tamanho</span>
+                <span class="info-value">60 MB</span>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span class="info-label">Segurança</span>
+                <span class="info-value">Criptografado</span>
+            </div>
+            <div class="info-item">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span class="info-label">Sistema</span>
+                <span class="info-value">Android 6.0+</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            2026 wnet. Direitos Reservado.
+        </div>
+    </div>
+
+    <!-- Overlay de Status Surpreendente -->
+    <div id="statusOverlay" class="status-overlay">
+        <div class="status-card">
+            <div id="loader" class="loader"></div>
+            <h2 id="statusTitle" style="margin-bottom: 10px;">Iniciando...</h2>
+            <p id="statusDesc" style="margin-bottom: 0;">Sua conexão segura está sendo preparada.</p>
+        </div>
+    </div>
+
+    <script>
+        const downloadBtn = document.getElementById('downloadLink');
+        const overlay = document.getElementById('statusOverlay');
+        const statusTitle = document.getElementById('statusTitle');
+        const statusDesc = document.getElementById('statusDesc');
+        const loader = document.getElementById('loader');
+
+        downloadBtn.addEventListener('click', function(e) {
+            // Mostra o overlay com animação
+            overlay.style.display = 'flex';
+            setTimeout(() => overlay.classList.add('active'), 10);
+
+            // Sequência de mensagens para "surpreender"
+            setTimeout(() => {
+                statusTitle.textContent = "Verificando Integridade";
+                statusDesc.textContent = "Garantindo que o arquivo seja 100% seguro.";
+            }, 1500);
+
+            setTimeout(() => {
+                statusTitle.textContent = "Download Iniciado";
+                statusDesc.textContent = "O wnet está sendo transferido para seu dispositivo.";
+                loader.style.borderColor = "transparent";
+                loader.style.borderTopColor = "#34c759"; // Verde Apple
+                loader.innerHTML = '<i class="fa-solid fa-check" style="color: #34c759; font-size: 24px; margin-top: 10px;"></i>';
+                loader.style.animation = "none";
+            }, 3000);
+
+            // Fecha o overlay após 5 segundos
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                setTimeout(() => overlay.style.display = 'none', 500);
+            }, 5500);
+        });
+    </script>
+</body>
+</html>
